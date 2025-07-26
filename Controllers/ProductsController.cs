@@ -1,9 +1,9 @@
 ﻿using API_EF_JWT.Data;
 using API_EF_JWT.DTOs;
 using API_EF_JWT.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_EF_JWT.Controllers
@@ -11,6 +11,7 @@ namespace API_EF_JWT.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
+    [EnableRateLimiting("fixed")]
     public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext _db;
